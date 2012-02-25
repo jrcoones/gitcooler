@@ -5,4 +5,6 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { "my_test_password&^" }
   end
+
+  factory :owner, :parent => :user
 end
