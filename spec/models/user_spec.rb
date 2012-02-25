@@ -1,47 +1,59 @@
 require 'spec_helper'
 
 describe User do
+  before do
+    # Create the current user
+    @current_user = Factory(:user)
+
+    # Create an additional user
+    @another_user = Factory(:user)
+  end
+
   context "#projects" do
     before do
-      # Create the "me" user
-      @current_user = Factory(:user)
-
-      # Create the "someone else" user
-      someone_else = Factory(:user)
-
       # Build projects the user owns
       3.times { @current_user.my_projects.create(Factory.attributes_for(:project)) }
 
       # Build projects the user belongs to
       2.times do |i|
-        project = someone_else.my_projects.create(Factory.attributes_for(:project))
+        project = @another_user.my_projects.create(Factory.attributes_for(:project))
         project.members << @current_user unless i.odd?
       end
     end
 
     it { @current_user.projects.should have(4).items }
+    it { @another_user.projects.should have(2).items }
     it { @current_user.my_projects.should have(3).items }
+    it { @another_user.my_projects.should have(2).items }
     it { @current_user.my_memberships.should have(1).items }
+    it { @another_user.my_memberships.should have(0).items }
+
+    it { expect{ @current_user.destroy }.to change(Project, :count).from(5).to(2) }
+    it { expect{ @current_user.destroy }.to change(@another_user.projects, :size).by(0) }
+    it { expect{ @current_user.destroy }.to change(@another_user.my_projects, :size).by(0) }
+    it { expect{ @current_user.destroy }.to change(@another_user.my_memberships, :size).by(0) }
+
+    it { expect{ @another_user.destroy }.to change(Project, :count).from(5).to(3) }
+    it { expect{ @another_user.destroy }.to change(@current_user.projects, :size).from(4).to(3) }
+    it { expect{ @another_user.destroy }.to change(@current_user.my_projects, :size).by(0) }
+    it { expect{ @another_user.destroy }.to change(@current_user.my_memberships, :size).from(1).to(0) }
 
   end
 
   context "#memberships" do
     before do
-      # Create the current_user
-      @current_user = Factory(:user)
-
-      # Create someone else
-      @someone_else = Factory(:user)
+      # Create a project for the current user
+      @current_user.my_projects.create(Factory.attributes_for(:project))
 
       # Build projects the user belongs to
       3.times do
-        project = @someone_else.my_projects.create(Factory.attributes_for(:project))
+        project = @another_user.my_projects.create(Factory.attributes_for(:project))
         project.members << @current_user
       end
     end
 
-    it { expect{ @someone_else.destroy }.to change(@current_user.my_memberships, :size).from(3).to(0) }
-    it { expect{ @someone_else.destroy }.to change(Membership, :count).from(3).to(0) }
-    it { expect{ @someone_else.destroy }.to change(Project, :count).from(4).to(1) }
+    it { expect{ @another_user.destroy }.to change(@current_user.my_memberships, :size).from(3).to(0) }
+    it { expect{ @another_user.destroy }.to change(Membership, :count).from(3).to(0) }
+    it { expect{ @another_user.destroy }.to change(Project, :count).from(4).to(1) }
   end
 end
