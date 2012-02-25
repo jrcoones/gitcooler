@@ -7,6 +7,18 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
 
-  # Link a user to projects they belong to or own
+  # Link a user to projects they own
   has_many :my_projects, :dependent => :destroy, :class_name => "Project", :foreign_key => "owner_id"
+
+  # Link a user to projects they are a member of
+  has_many :memberships
+  has_many :my_memberships, :through => :memberships, :source => :project
+
+  # Projects this user is either a member of or a owner of...
+  # TODO Refactor this later; I'm not sure this is very efficient
+  def projects
+    my_proj = self.my_projects
+    my_memb = self.my_memberships
+    my_proj + my_memb
+  end
 end

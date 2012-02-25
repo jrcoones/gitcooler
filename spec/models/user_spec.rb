@@ -11,9 +11,17 @@ describe User do
 
       # Build projects the user owns
       3.times { @current_user.my_projects.create(Factory.attributes_for(:project)) }
+
+      # Build projects the user belongs to
+      1.times do
+        project = someone_else.my_projects.create(Factory.attributes_for(:project))
+        project.members << @current_user
+      end
     end
 
+    it { @current_user.projects.should have(4).items }
     it { @current_user.my_projects.should have(3).items }
+    it { @current_user.my_memberships.should have(1).items }
 
   end
 end
