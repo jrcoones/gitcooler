@@ -1,4 +1,10 @@
 GitCooler::Application.routes.draw do
+
+  # All functions that are part of the API will be within this scope
+  scope "api" do
+    resources :projects
+  end
+
   devise_for :users
 
   # The priority is based upon order of creation:
