@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :project do
-    title "MyString"
-    description "MyString"
-    slug "MyString"
+    title { Faker::Lorem.words.join(" ").titleize }
+    description { Faker::Lorem.sentence }
   end
 end
