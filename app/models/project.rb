@@ -17,4 +17,12 @@ class Project < ActiveRecord::Base
   # The users who can contribute to this project
   has_many :memberships, :dependent => :destroy
   has_many :members, :through => :memberships, :source => :user
+
+  def is_member?(user)
+    self.members.exists?(user)
+  end
+
+  def is_owner?(user)
+    self.owner == user
+  end
 end
