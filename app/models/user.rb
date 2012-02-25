@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :my_projects, :dependent => :destroy, :class_name => "Project", :foreign_key => "owner_id"
 
   # Link a user to projects they are a member of
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :my_memberships, :through => :memberships, :source => :project
 
   # Projects this user is either a member of or a owner of...
