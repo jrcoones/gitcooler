@@ -1,3 +1,20 @@
+GIT
+  remote: https://github.com/mojombo/grit.git
+  revision: 3fc864f3c637e06e2fa7a81f6b48a5df58a9bc5b
+  specs:
+    grit (2.4.1)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+      posix-spawn (~> 0.3.6)
+
+GIT
+  remote: https://github.com/wingrunr21/gitolite.git
+  revision: 6c8935ceb8885ecb528ef4cc896c9d941db61be6
+  specs:
+    gitolite (0.0.4.alpha)
+      grit (~> 2.4.1)
+      hashery (~> 1.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -79,6 +96,7 @@ GEM
     friendly_id (4.0.0)
     gherkin (2.9.0)
       json (>= 1.4.6)
+    hashery (1.4.0)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
@@ -96,6 +114,7 @@ GEM
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
     polyglot (0.3.3)
+    posix-spawn (0.3.6)
     rack (1.4.1)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -183,6 +202,8 @@ DEPENDENCIES
   factory_girl_rails (~> 1.7.0)
   faker (~> 1.0.1)
   friendly_id (~> 4.0.0)
+  gitolite!
+  grit!
   jquery-rails
   rails (~> 3.2.1)
   rails-backbone (~> 0.7.0)

@@ -24,6 +24,10 @@ gem "jquery-rails"
 gem "rails-backbone", "~> 0.7.0"
 gem "friendly_id", "~> 4.0.0"
 
+# To communicate with Git and Gitolite
+gem "gitolite", :git => "https://github.com/wingrunr21/gitolite.git"
+gem "grit", :git => "https://github.com/mojombo/grit.git"
+
 # To use ActiveModel has_secure_password
 gem "bcrypt-ruby", "~> 3.0.0"
 gem "devise", "~> 2.0.4"
