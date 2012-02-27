@@ -1,2 +1,5 @@
 gitolite:
-  path: /tmp/gitolite-admin-clone
+  user:     git
+  hostname: localhost
+  port:     22
+  path:     /tmp/gitolite-admin-clone

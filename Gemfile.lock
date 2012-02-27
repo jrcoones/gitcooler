@@ -111,6 +111,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.17.2)
     multi_json (1.1.0)
+    net-ssh (2.3.0)
     nokogiri (1.5.0)
     orm_adapter (0.0.6)
     polyglot (0.3.3)
@@ -221,6 +222,7 @@ DEPENDENCIES
   gitolite!
   grit!
   jquery-rails
+  net-ssh (~> 2.3.0)
   rails (~> 3.2.1)
   rails-backbone (~> 0.7.0)
   resque (~> 1.20.0)

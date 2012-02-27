@@ -54,4 +54,5 @@ group :development, :test do
   gem "rspec-rails", "~> 2.8.1"
   gem "cucumber-rails", "~> 1.3.0"
   gem "faker", "~> 1.0.1"
+  gem "net-ssh", "~> 2.3.0"
 end
