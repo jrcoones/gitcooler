@@ -24,6 +24,9 @@ gem "jquery-rails"
 gem "rails-backbone", "~> 0.7.0"
 gem "friendly_id", "~> 4.0.0"
 
+# To allow background processing
+gem "resque", "~> 1.20.0"
+
 # To communicate with Git and Gitolite
 gem "gitolite", :git => "https://github.com/wingrunr21/gitolite.git"
 gem "grit", :git => "https://github.com/mojombo/grit.git"
