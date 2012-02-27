@@ -16,3 +16,4 @@
 
 # Ignore the Git Cooler configuration files
 /config/database.yml
+/config/git_cooler.yml

@@ -1,0 +1,2 @@
+gitolite:
+  path: /tmp/gitolite-admin-clone
