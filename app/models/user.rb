@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   # Link a user to keys they own
-  has_many :keys, :dependent => :destroy
+  has_many :keys, :dependent => :destroy, :autosave => true
 
   # Join first and last name
   def name
