@@ -21,4 +21,12 @@ class User < ActiveRecord::Base
     my_memb = self.my_memberships
     my_proj + my_memb
   end
+
+  # Link a user to keys they own
+  has_many :keys, :dependent => :destroy
+
+  # Join first and last name
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

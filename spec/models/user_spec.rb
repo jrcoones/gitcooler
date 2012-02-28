@@ -56,4 +56,14 @@ describe User do
     it { expect{ @another_user.destroy }.to change(Membership, :count).from(3).to(0) }
     it { expect{ @another_user.destroy }.to change(Project, :count).from(4).to(1) }
   end
+
+  context "#keys" do
+    before do
+      # Create a key for the current user
+      @key = @current_user.keys.create(Factory.attributes_for(:key))
+      3.times { @current_user.keys.create(Factory.attributes_for(:key)) }
+    end
+    it { expect{ @key.destroy }.to change(@current_user.keys, :size).from(4).to(3) }
+    it { @current_user.keys.size.should == 4 }
+  end
 end
