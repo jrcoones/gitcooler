@@ -37,6 +37,9 @@ gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
 gem "rolify", "~> 2.2.2"
 
+# RABL
+gem "rabl", "~> 0.6.0"
+
 # To use Jbuilder templates for JSON
 # gem "jbuilder"
 
