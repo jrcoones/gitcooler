@@ -2,7 +2,7 @@ GitCooler::Application.routes.draw do
 
   # All functions that are part of the API will be within this scope
   scope "api" do
-    resources :projects
+    resources :projects, :except => [:new, :edit]
   end
 
   devise_for :users
