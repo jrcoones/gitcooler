@@ -7,6 +7,9 @@ describe ProjectsController do
   # logged in or not.
 
   let(:current_user) { Factory(:user) }
+  let(:current_user_project) { current_user.my_projects.create(Factory.attributes_for(:project, owner: nil)) }
+  let(:another_user_project) { Factory(:project) }
+  let(:project_attrs) { Factory.attributes_for(:project, owner: nil) }
 
   # Create an log in the current user
   before(:each) do
@@ -24,11 +27,60 @@ describe ProjectsController do
   end
 
   context "GET 'index'" do
-    before do
-      get :index, format: :json
-    end
+    before { get :index, format: :json }
     it { response.should be_success }
     it { assigns(:projects).should have(3).items }
+  end
+
+  context "GET 'show'" do
+    context "one of the current users projects" do
+      before { get :show, format: :json, id: current_user_project }
+      it { response.should be_success }
+      it { assigns(:project).should == current_user_project }
+    end
+    context "a project that does not belong to the current user" do
+      before { get :show, format: :json, id: another_user_project }
+      it { response.should_not be_success }
+      it { response.code.should eq("404") }
+    end
+  end
+
+  context "PUT 'update'" do
+    context "one of the current users projects" do
+      before { put :update, format: :json, id: current_user_project, project: project_attrs }
+      it { response.should be_success }
+      it { assigns(:project).should be_a(Project) }
+      it { assigns(:project).title.should == project_attrs[:title] }
+      it { assigns(:project).should be_persisted }
+      it { assigns(:project).slug.should_not == current_user_project.slug }
+    end
+    context "a project that does not belong to the current user" do
+      before { put :update, format: :json, id: another_user_project, project: project_attrs }
+      it { response.should_not be_success }
+      it { response.code.should eq("404") }
+    end
+  end
+
+  context "POST 'create'" do
+    before { post :create, format: :json, project: project_attrs }
+    it { response.should be_success }
+    it { assigns(:project).should be_a(Project) }
+    it { assigns(:project).should be_persisted }
+    it { assigns(:project).title.should == project_attrs[:title] }
+    it { assigns(:project).should be_valid }
+  end
+
+  context "DELETE 'destroy'" do
+    context "one of the current users projects" do
+      before { delete :destroy, format: :json, id: current_user_project }
+      it { response.should be_success }
+      it { expect { delete :destroy, format: :json, id: current_user_project }.to change(Project, :count).by(-1) }
+    end
+    context "a project that does not belong to the current user" do
+      before { delete :destroy, format: :json, id: another_user_project }
+      it { response.should_not be_success }
+      it { response.code.should eq("404") }
+    end
   end
 
 end
