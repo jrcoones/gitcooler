@@ -10,13 +10,11 @@ describe ProjectsController do
 
   # Create an log in the current user
   before(:each) do
-    sign_in current_user, :user
+    @request.env["devise.mapping"] = Devise.mappings[:user]
+    sign_in current_user
 
     # Create a few projects for the user
     3.times { current_user.my_projects.create(Factory.attributes_for(:project, owner: nil)) }
-
-    # Make sure the controller is using this actual user
-    controller.stub!(:current_user).and_return(current_user)
   end
 
   context "GET 'index' as HTML" do
@@ -30,7 +28,7 @@ describe ProjectsController do
       get :index, format: :json
     end
     it { response.should be_success }
-    it { current_user.should_receive(:my_projects) }
+    it { assigns(:projects).should have(3).items }
   end
 
 end
