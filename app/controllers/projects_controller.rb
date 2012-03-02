@@ -1,5 +1,9 @@
 class ProjectsController < ApiController
   def index
-    respond_with Project.all
+    @projects = current_user.my_projects
+  end
+
+  def show
+    @project = current_user.my_projects.find params[:id]
   end
 end
