@@ -42,6 +42,10 @@ describe ProjectsController do
       before { get :show, format: :json, id: another_user_project }
       it { response.should_not be_success }
       it { response.code.should eq("404") }
+      it { response.body.should have_json_path("error/id") }
+      it { response.body.should have_json_path("error/class_name") }
+      it { response.body.should have_json_path("error/action_name") }
+      it { response.body.should have_json_path("error/message") }
     end
   end
 
@@ -58,6 +62,10 @@ describe ProjectsController do
       before { put :update, format: :json, id: another_user_project, project: project_attrs }
       it { response.should_not be_success }
       it { response.code.should eq("404") }
+      it { response.body.should have_json_path("error/id") }
+      it { response.body.should have_json_path("error/class_name") }
+      it { response.body.should have_json_path("error/action_name") }
+      it { response.body.should have_json_path("error/message") }
     end
   end
 
@@ -80,6 +88,10 @@ describe ProjectsController do
       before { delete :destroy, format: :json, id: another_user_project }
       it { response.should_not be_success }
       it { response.code.should eq("404") }
+      it { response.body.should have_json_path("error/id") }
+      it { response.body.should have_json_path("error/class_name") }
+      it { response.body.should have_json_path("error/action_name") }
+      it { response.body.should have_json_path("error/message") }
     end
   end
 
