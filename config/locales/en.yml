@@ -4,5 +4,6 @@
 en:
   api:
     errors:
+      record_invalid: The instance of "%{class_name}" cannot be persisted in the database because it fails one or more validations.
       record_not_found: The record "%{column_name}" cannot be found by the %{class_name}.
       unhandled_exception: The server was un-able to process this request. A log of the error has been made.
