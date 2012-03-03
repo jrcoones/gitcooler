@@ -1,0 +1,13 @@
+<div id="project-list">
+  <ul>
+  <% for project in @projects.models: %>
+    <li><a href="#projects/<%= project.get("id") %>"><%= project.get('title') %></a></li>
+  <% end %>
+  </ul>
+</div>
+
+<form id="new-project">
+  <input type="text" name="title" id="new-project-title">
+  <textarea cols="40" name="description" id="new-project-description"></textarea>
+  <input type="submit" value="Create Project">
+</form>

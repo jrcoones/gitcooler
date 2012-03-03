@@ -3,7 +3,9 @@ window.GitCooler =
   Collections: {}
   Views: {}
   Routers: {}
-  init: -> alert 'Hello from Backbone!'
+  init: ->
+    new GitCooler.Routers.Projects()
+    Backbone.history.start()
 
 $(document).ready ->
   GitCooler.init()
