@@ -23,7 +23,7 @@ group :assets do
 end
 
 gem "jquery-rails"
-gem "rails-backbone", "~> 0.7.0"
+gem "backbone-on-rails", "~> 0.9.1.0"
 gem "friendly_id", "~> 4.0.0"
 
 # To allow background processing
