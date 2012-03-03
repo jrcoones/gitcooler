@@ -104,6 +104,9 @@ GEM
       railties (>= 3.2.0, < 5.0)
       thor (~> 0.14)
     json (1.6.5)
+    json_spec (1.0.0)
+      multi_json (~> 1.0)
+      rspec (~> 2.0)
     mail (2.4.1)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -224,6 +227,7 @@ DEPENDENCIES
   gitolite!
   grit!
   jquery-rails
+  json_spec (~> 1.0.0)
   net-ssh (~> 2.3.0)
   rabl (~> 0.6.0)
   rails (~> 3.2.1)

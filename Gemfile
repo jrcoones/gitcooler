@@ -55,6 +55,7 @@ gem "rabl", "~> 0.6.0"
 group :development, :test do
   gem "factory_girl_rails", "~> 1.7.0"
   gem "rspec-rails", "~> 2.8.1"
+  gem "json_spec", "~> 1.0.0"
   gem "cucumber-rails", "~> 1.3.0"
   gem "faker", "~> 1.0.1"
   gem "net-ssh", "~> 2.3.0"
