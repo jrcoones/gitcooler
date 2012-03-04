@@ -1,0 +1,4 @@
+<div id="project">
+  <div><%= @project.get("title") %></div>
+  <div><%= @project.get("description") %></div>
+</div>

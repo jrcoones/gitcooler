@@ -4,7 +4,7 @@ class GitCooler.Routers.Projects extends Backbone.Router
     'projects/:id': 'show'
 
   initialize: ->
-    @collection = new GitCooler.Collections.Projects()
+    @collection = new GitCooler.Collections.Projects(gon.projects)
     @collection.fetch()
 
   index: ->
@@ -12,4 +12,6 @@ class GitCooler.Routers.Projects extends Backbone.Router
     $('#container').html(view.render().el)
 
   show: (id) ->
-    alert "you are trying to show #{id}"
+    model = @collection.get(id)
+    view = new GitCooler.Views.ProjectsShow(model: model)
+    $('#container').html(view.render().el)
