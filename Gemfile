@@ -41,6 +41,7 @@ gem "rolify", "~> 2.2.2"
 
 # RABL
 gem "rabl", "~> 0.6.0"
+gem "gon", "~> 2.1.0"
 
 # To use Jbuilder templates for JSON
 # gem "jbuilder"
