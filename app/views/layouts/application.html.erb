@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GitCooler</title>
+  <title><%= t('brand') %></title>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
@@ -12,6 +12,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to t('brand'), root_path, :class => "brand" %>
+        <ul class="nav pull-right">
+          <li><a href="<%= root_path %>"><i class="icon-user icon-white"></i><%= t('settings') %></a></li>
+          <li class="divider-vertical"></li>
+          <li><%= user_action %></li>
+          <li class="divider-vertical"></li>
+          <li><%= image_tag current_user.gravatar_url :size => 38 %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
   <% flash.each do |name, msg| %>
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">

@@ -2,6 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  brand: Git Cooler
+  settings: Settings
+  sign_in: Sign In
+  sign_out: Sign Out
   api:
     errors:
       record_invalid: The instance of "%{class_name}" cannot be persisted in the database because it fails one or more validations.
