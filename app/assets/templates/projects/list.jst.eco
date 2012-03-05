@@ -1,0 +1,5 @@
+<li class="nav-header">Projects (<%= @projects.length %>)</li>
+<li><a href="#"><i class="icon-plus"></i>New Project</a><li>
+<% for project in @projects.models: %>
+  <li><a href="#projects/<%= project.get("id") %>"><%= project.get('title') %></a></li>
+<% end %>

@@ -16,13 +16,17 @@
   <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <%= link_to t('brand'), root_path, :class => "brand" %>
+        <%= link_to t('brand'), :root, :class => "brand" %>
         <ul class="nav pull-right">
+          <% if user_signed_in? %>
           <li><a href="<%= root_path %>"><i class="icon-user icon-white"></i><%= t('settings') %></a></li>
+          <% end %>
           <li class="divider-vertical"></li>
           <li><%= user_action %></li>
           <li class="divider-vertical"></li>
+          <% if user_signed_in? %>
           <li><%= image_tag current_user.gravatar_url :size => 38 %>
+          <% end %>
         </ul>
       </div>
     </div>

@@ -1,4 +1,17 @@
-<div id="project">
-  <div><%= @project.get("title") %></div>
-  <div><%= @project.get("description") %></div>
+<div class="page-header">
+  <h1><%= @project.get("title") %></h1>
+  <h5><%= @project.get("description") %></h5>
+  <h5 class="pull-right">Owner: Me</h5>
+  <h5 class="pull-right">Owner: <a href="#">Someone Else</a></h5>
+</div>
+<div class="row-fluid">
+  <div class="well span4 pull-left">
+    <h3>Git Clone</h3>
+    <div><%= @project.get("clone_url") %></div>
+  </div>
+  <div class="btn-group pull-right">
+    <a class="btn" href="#">Issues</a>
+    <a class="btn" href="#">Commits</a>
+    <a class="btn" href="#">Chat History</a>
+  </div>
 </div>
