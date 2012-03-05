@@ -13,8 +13,12 @@
 </head>
 <body>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% flash.each do |name, msg| %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= msg %>
+    </div>
+  <% end %>
 
 <%= yield %>
 
