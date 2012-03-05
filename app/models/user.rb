@@ -1,4 +1,8 @@
 class User < ActiveRecord::Base
+  # Gravatar support
+  include Gravtastic
+  gravtastic :secure => true, :filetype => :png, :size => 48
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
