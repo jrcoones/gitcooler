@@ -111,6 +111,7 @@ GEM
     gon (2.1.0)
       actionpack (>= 2.3.0)
       json
+    gravtastic (3.2.6)
     hashery (1.4.0)
     hike (1.2.1)
     i18n (0.6.0)
@@ -251,6 +252,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.0)
   gitolite!
   gon (~> 2.1.0)
+  gravtastic (~> 3.2.6)
   grit!
   jquery-rails
   json_spec (~> 1.0.0)

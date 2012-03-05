@@ -38,6 +38,7 @@ gem "bcrypt-ruby", "~> 3.0.0"
 gem "devise", "~> 2.0.4"
 gem "cancan", "~> 1.6.7"
 gem "rolify", "~> 2.2.2"
+gem "gravtastic", "~> 3.2.6"
 
 # RABL
 gem "rabl", "~> 0.6.0"
