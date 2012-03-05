@@ -1,2 +1,15 @@
-<%= image_tag current_user.gravatar_url %>
-<div id="container"></div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <!--Sidebar content-->
+      <ul class="nav nav-list">
+        <li class="nav-header">PM</li>
+        <li data-router="projects"><a href="#projects">Projects</a></li>
+        <li><a href="#memberships">Memberships</a></li>
+      </ul>
+    </div>
+    <div id="content" class="span10">
+      <p>Loading...</p>
+    </div>
+  </div>
+</div>

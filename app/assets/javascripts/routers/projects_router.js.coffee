@@ -1,6 +1,9 @@
 class GitCooler.Routers.Projects extends Backbone.Router
+  baseContainer: '#content'
+
   routes:
     '': 'index'
+    'projects': 'index'
     'projects/:id': 'show'
 
   initialize: ->
@@ -8,10 +11,17 @@ class GitCooler.Routers.Projects extends Backbone.Router
     @collection.fetch()
 
   index: ->
+    @setActive()
     view = new GitCooler.Views.ProjectsIndex(collection: @collection)
-    $('#container').html(view.render().el)
+    $(@baseContainer).html(view.render().el)
 
   show: (id) ->
+    @setActive()
     model = @collection.get(id)
     view = new GitCooler.Views.ProjectsShow(model: model)
-    $('#container').html(view.render().el)
+    $(@baseContainer).html(view.render().el)
+
+  setActive: ->
+    _.each($('ul.nav li'), (element) ->
+      $(element).removeClass('active'))
+    $('li[data-router="projects"]').addClass('active')
