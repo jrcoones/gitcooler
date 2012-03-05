@@ -36,4 +36,9 @@ describe Project do
     it { @project.is_owner?(@member).should be_false }
   end
 
+  context "clone_url" do
+    before { @project = Factory(:project) }
+    it { @project.clone_url.should == "git@localhost:#{@project.slug}.git"}
+  end
+
 end

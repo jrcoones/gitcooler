@@ -25,4 +25,8 @@ class Project < ActiveRecord::Base
   def is_owner?(user)
     self.owner == user
   end
+
+  def clone_url
+    GitProvider.base_clone_url(self.slug)
+  end
 end
