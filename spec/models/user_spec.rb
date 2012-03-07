@@ -25,18 +25,18 @@ describe User do
     it { @another_user.projects.should have(2).items }
     it { @current_user.my_projects.should have(3).items }
     it { @another_user.my_projects.should have(2).items }
-    it { @current_user.my_memberships.should have(1).items }
-    it { @another_user.my_memberships.should have(0).items }
+    it { @current_user.collaborations.should have(1).items }
+    it { @another_user.collaborations.should have(0).items }
 
     it { expect{ @current_user.destroy }.to change(Project, :count).from(5).to(2) }
     it { expect{ @current_user.destroy }.to change(@another_user.projects, :size).by(0) }
     it { expect{ @current_user.destroy }.to change(@another_user.my_projects, :size).by(0) }
-    it { expect{ @current_user.destroy }.to change(@another_user.my_memberships, :size).by(0) }
+    it { expect{ @current_user.destroy }.to change(@another_user.collaborations, :size).by(0) }
 
     it { expect{ @another_user.destroy }.to change(Project, :count).from(5).to(3) }
     it { expect{ @another_user.destroy }.to change(@current_user.projects, :size).from(4).to(3) }
     it { expect{ @another_user.destroy }.to change(@current_user.my_projects, :size).by(0) }
-    it { expect{ @another_user.destroy }.to change(@current_user.my_memberships, :size).from(1).to(0) }
+    it { expect{ @another_user.destroy }.to change(@current_user.collaborations, :size).from(1).to(0) }
 
   end
 
@@ -52,7 +52,7 @@ describe User do
       end
     end
 
-    it { expect{ @another_user.destroy }.to change(@current_user.my_memberships, :size).from(3).to(0) }
+    it { expect{ @another_user.destroy }.to change(@current_user.collaborations, :size).from(3).to(0) }
     it { expect{ @another_user.destroy }.to change(Membership, :count).from(3).to(0) }
     it { expect{ @another_user.destroy }.to change(Project, :count).from(4).to(1) }
   end

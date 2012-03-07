@@ -12,13 +12,13 @@ class User < ActiveRecord::Base
 
   # Link a user to projects they are a member of
   has_many :memberships, :dependent => :destroy
-  has_many :my_memberships, :through => :memberships, :source => :project
+  has_many :collaborations, :through => :memberships, :source => :project
 
   # Projects this user is either a member of or a owner of...
   # TODO Refactor this later; I'm not sure this is very efficient
   def projects
     my_proj = self.my_projects
-    my_memb = self.my_memberships
+    my_memb = self.collaborations
     my_proj + my_memb
   end
 
